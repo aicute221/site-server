@@ -17,8 +17,9 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     const TYPE_TO_URL = array(
-        '',
-        '/image/js.jpg'
+        'js' => '/image/js.jpg',
+        'css' => '/image/css3.jpg',
+        'html' => '/image/h5.jpg'
     );
 
     public function articleList(Request $request){
@@ -47,7 +48,10 @@ class IndexController extends Controller
         foreach ($examples as $example){
             $data[] = array(
                 "title" => $example->title,
-                "cover_url" => self::TYPE_TO_URL[$example->cover_url]
+                "cover_url" => self::TYPE_TO_URL[$example->e_type],
+                "id" => $example->id,
+                "name" => $example->name,
+                "type" => $example->e_type
             );
         }
         return response(array(
@@ -55,6 +59,15 @@ class IndexController extends Controller
             "info" => "ok",
             "data" => $data
         ));
+    }
+
+    public function articleDetailPage($id){
+        $blog = Blog::find($id);
+        $title = '详细内容';
+        if (!empty($blog)){
+            $title = $blog->title;
+        }
+        return view('home.detail', ['id' => $id, 'title' => $title]);
     }
 
     public function articleDetail(Request $request){
@@ -72,8 +85,13 @@ class IndexController extends Controller
                 'summary' => $blog->summary,
                 'content' => htmlspecialchars_decode($blog->content),
                 'create_time' => $blog->created_at->format('Y-m-d H:i:s'),
+                'time' => $blog->created_at->format('Y.m.d'),
                 'author' => $blog->author
             ]);
         }
+    }
+
+    public function example(Request $request, $name){
+        return view('example/' . $name);
     }
 }

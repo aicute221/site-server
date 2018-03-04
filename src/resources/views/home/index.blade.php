@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="top" id="top">
-        <p class="top-title">夏目男神</p>
+        <p class="top-title">Aicute221</p>
     </div>
 
     <div class="container">
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="footer">
-        <p>Copyright ©</p>
+        <p>Copyright © echoecho.cn</p>
     </div>
     <div class="return">
         <a href="#top"><p>返回顶部</p></a>
@@ -56,26 +56,28 @@
             data: {},
             success: function(response){
                 console.log(response);
-                if (response.status === 1){
-                    response.data.forEach(function(item){
-                        var c = '<div class="article-item">'+
-                        '<h1 class="title">' + item.title + '</h1>'+
-                        '<p class="sub-title">' + item.sub_title + '</p>'+
-                        '<p class="summary">'+
-                        '<i>' + item.summary + '</i>'+
-                        '</p>'+
-                        '<p class="author-time">'+
-                        '<i>'+
-                        '<span class="author">' + item.author + '</span>'+' '+
-                        '<span class="time">' + item.time + '</span>'+
-                        '</i>'+
-                        '</p>'+
-                        '</div>'+
-                        '<div class="line"></div>';
+              if (response.status === 1){
+                response.data.forEach(function(item){
+                  var c = '<a href="/article/page/' + item.id +'" target="_blank">'+
+                    '<div class="article-item">'+
+                    '<h1 class="title">' + item.title + '</h1>'+
+                    '<p class="sub-title">' + item.sub_title + '</p>'+
+                    '<p class="summary">'+
+                    '<i>' + item.summary + '</i>'+
+                    '</p>'+
+                    '<p class="author-time">'+
+                    '<i>'+
+                    '<span class="author">' + item.author + '</span>'+' '+
+                    '<span class="time">' + item.time + '</span>'+
+                    '</i>'+
+                    '</p>'+
+                    '</div>'+
+                    '</a>'+
+                    '<div class="line"></div>';
 
-                        $("#articles").append(c);
-                    });
-                }
+                  $("#articles").append(c);
+                });
+              }
             },
             error: function (response) {
                 console.log(response.status)
@@ -91,10 +93,12 @@
            success: function(response){
                if(response.status === 1){
                    response.data.forEach(function(item){
-                       var a ='<div class="example-item">' +
-                           '<img src="'+item.cover_url+'">' +
-                           '<p>'+ item.title +'</p>' +
-                           '</div>';
+                     var a = '<a href="/example/page/' + item.name + '" target="_blank">'+
+                         '<div class="example-item">' +
+                         '<img src="'+item.cover_url+'">' +
+                         '<p>'+ item.title +'</p>' +
+                         '</div>'+
+                         '</a>';
                        $("#examples").append(a);
                    });
                }

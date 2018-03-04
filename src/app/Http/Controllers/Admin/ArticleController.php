@@ -52,7 +52,7 @@ class ArticleController extends Controller
         $blog->content = htmlspecialchars($request->input('content'));
         $blog->summary = mb_substr(preg_replace_callback('/<.*?>/',function($match){
             return "";
-        }, $request->input('content')), 0, 80);
+        }, $request->input('content')), 0, 80) . "...";
         $blog->save();
 
         return $this->ajax_success(['url' => '/admin/articles']);

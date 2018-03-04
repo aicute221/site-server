@@ -37,6 +37,8 @@
     <div class="content left">
         <div class="list" data-src="/admin/articles">博客列表</div>
         <div class="list" data-src="/admin/article">新增博客</div>
+        <div class="list" data-src="/admin/examples">例子列表</div>
+        <div class="list" data-src="/admin/example">新增例子</div>
     </div>
     <div class="content right">
         <iframe src="/admin/articles">
