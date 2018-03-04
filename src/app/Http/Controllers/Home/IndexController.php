@@ -16,6 +16,11 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    const TYPE_TO_URL = array(
+        '',
+        '/image/js.jpg'
+    );
+
     public function articleList(Request $request){
         $blogs = Blog::orderBy('id', 'desc')->take(20)->get();
         $data = [];
@@ -42,7 +47,7 @@ class IndexController extends Controller
         foreach ($examples as $example){
             $data[] = array(
                 "title" => $example->title,
-                "cover_url" => $example->cover_url
+                "cover_url" => self::TYPE_TO_URL[$example->cover_url]
             );
         }
         return response(array(

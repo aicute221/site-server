@@ -37,6 +37,8 @@ class ArticleController extends Controller
             return $this->ajax_error('内容不能为空');
         }
 
+        $blog = null;
+
         if (!empty($request->input('id'))){
             $blog = Blog::find($request->input('id'));
         }
