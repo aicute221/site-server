@@ -1,0 +1,48 @@
+div,p,a,h1,h2,h3,h4,h5,h6,img,body{
+    padding: 0;
+    margin: 0;
+}
+
+.sign-in{
+    width: 380px;
+    height: 280px;
+    border: 1px solid #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #ddd;
+    position: fixed;
+    top: 30%;
+    left: 36%;
+}
+
+.sign-in p{
+    padding: 12px;
+    font-size: 15px;
+}
+
+span{
+    display: inline-block;
+    color: #888888;
+    font-size: 13px;
+    padding: 26px 0 5px 42px;
+}
+
+.line{
+    border: 1px solid #f3f3f3;
+}
+
+.box{
+    margin: 0 12px;
+    padding: 7px;
+    width: 220px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+}
+
+.sign{
+    color: white;
+    background-color: #92b901;
+    border: 1px solid #92b901;
+    border-radius: 5px;
+    margin: 20px 0 0 88px;
+    padding: 8px 18px;
+}
